@@ -5,20 +5,26 @@ Consumers bring their own session pool instance, caching, and error surface.
 """
 
 import logging
-from typing import Any, Dict, Optional
 
 from streamlink.exceptions import (
     NoPluginError,
     NoStreamsError,
+)
+from streamlink.exceptions import (
     PluginError as SLPluginError,
 )
 from streamlink.session import Streamlink
 
 from streamwatch_core.errors import (
-    BrowserRequiredError,
     NoPluginError as CoreNoPluginError,
+)
+from streamwatch_core.errors import (
     NoStreamsError as CoreNoStreamsError,
+)
+from streamwatch_core.errors import (
     PluginError as CorePluginError,
+)
+from streamwatch_core.errors import (
     classify_error,
     is_browser_error,
 )

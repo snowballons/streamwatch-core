@@ -6,7 +6,7 @@ category-keyword and viewer-count logic. This is the canonical copy.
 
 import json
 import re
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any
 from urllib.parse import urlparse
 
 from streamwatch_core.models import StreamMetadata, UrlMetadata
@@ -79,7 +79,7 @@ def extract_platform_from_url(url: str) -> str:
         return "unknown"
 
 
-def _result(platform: str, username: str, url_type: str = "unknown") -> Dict[str, str]:
+def _result(platform: str, username: str, url_type: str = "unknown") -> dict[str, str]:
     return {"platform": platform, "username": username, "type": url_type}
 
 
@@ -176,7 +176,7 @@ def generate_fallback_thumbnail(platform: str, author: str) -> str:
     )
 
 
-def get_stream_types_from_streams(streams: dict) -> List[str]:
+def get_stream_types_from_streams(streams: dict) -> list[str]:
     """Extract the set of available stream types (HLS/HTTP/DASH/...) from streams."""
     stream_types = set()
     for stream in streams.values():
@@ -269,7 +269,7 @@ def extract_category_from_json(
 
 
 def extract_category_keywords(
-    metadata_result: Tuple[bool, str], platform: str, url_type: str = "unknown"
+    metadata_result: tuple[bool, str], platform: str, url_type: str = "unknown"
 ) -> str:
     """Extract category/keywords from streamlink JSON metadata (string form)."""
     success, json_data = metadata_result
@@ -289,7 +289,7 @@ def extract_category_keywords(
 _VIEWER_KEYS = ("viewers", "viewer_count", "online")
 
 
-def extract_viewer_count(meta: Dict[str, Any]) -> Optional[int]:
+def extract_viewer_count(meta: dict[str, Any]) -> int | None:
     """Extract a viewer count from metadata, returning None if unknown."""
     for key in _VIEWER_KEYS:
         if key in meta:
@@ -303,7 +303,7 @@ def extract_viewer_count(meta: Dict[str, Any]) -> Optional[int]:
 
 
 def normalize_stream_metadata(
-    meta: Dict[str, Any], platform: str, author_fallback: str = ""
+    meta: dict[str, Any], platform: str, author_fallback: str = ""
 ) -> StreamMetadata:
     """Build a normalized StreamMetadata from a plugin's raw metadata dict."""
     author = meta.get("author") or author_fallback

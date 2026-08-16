@@ -3,7 +3,6 @@
 import queue
 import threading
 import time
-from typing import Optional
 
 from streamlink.session import Streamlink
 
@@ -16,7 +15,7 @@ class StreamlinkSessionPool:
 
     def __init__(self, pool_size: int = 3, refresh_interval: float = 3600.0):
         self.pool_size = pool_size
-        self.sessions: "queue.Queue[Streamlink]" = queue.Queue(maxsize=pool_size)
+        self.sessions: queue.Queue[Streamlink] = queue.Queue(maxsize=pool_size)
         self.lock = threading.Lock()
         self.created_at = time.time()
         self.refresh_interval = refresh_interval
