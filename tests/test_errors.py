@@ -1,6 +1,6 @@
 """Tests for the error taxonomy."""
 
-from streamwatch_core.errors import (
+from tukiwatch_core.errors import (
     BrowserRequiredError,
     NoPluginError,
     NoStreamsError,

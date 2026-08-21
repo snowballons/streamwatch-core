@@ -1,6 +1,6 @@
 """Parity tests for URL parsing and metadata extraction."""
 
-from streamwatch_core.metadata import (
+from tukiwatch_core.metadata import (
     extract_category_from_json,
     extract_category_keywords,
     extract_platform_from_url,
